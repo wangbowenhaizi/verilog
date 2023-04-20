@@ -1,0 +1,15 @@
+
+module fulladd(in1,in2,cin,cout,sum);
+`include "halfadd.v";
+input in1,in2,cin;
+output cout,sum;
+wire cout,sum;
+
+wire h0_sum;  //半加器0输出的sum信号
+wire h0_cout;  //半加器0输出的进位信号
+wire h1_cout;  //半加器1输出的进位信号
+always
+halfadd halfadd_inst(in1,in2,h0_sum,h0_cout);
+halfadd halfadd_inst1(h0_sum,cin,h1_cout,cout);
+assign cout = h0_cout|h1_cout;   
+endmodule

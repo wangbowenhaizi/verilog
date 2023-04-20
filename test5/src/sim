@@ -1,0 +1,80 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "D:\D\soft\install\iverilog\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\D\soft\install\iverilog\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\D\soft\install\iverilog\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\D\soft\install\iverilog\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\D\soft\install\iverilog\iverilog\lib\ivl\va_math.vpi";
+S_0000017a83b45760 .scope module, "halfadd_tb" "halfadd_tb" 2 2;
+ .timescale -9 -9;
+v0000017a83b43a80_0 .net "cout", 0 0, L_0000017a83b8c700;  1 drivers
+v0000017a83b43b20_0 .var "in1", 3 0;
+v0000017a83b8bbc0_0 .var "in2", 3 0;
+v0000017a83b8bf80_0 .net "sum", 0 0, L_0000017a83b8c020;  1 drivers
+L_0000017a83b8c020 .part L_0000017a83b8c660, 0, 1;
+S_0000017a83b458f0 .scope module, "halfadd_inst" "halfadd" 2 19, 3 1 0, S_0000017a83b45760;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "in1";
+    .port_info 1 /INPUT 4 "in2";
+    .port_info 2 /OUTPUT 4 "sum";
+    .port_info 3 /OUTPUT 1 "cout";
+L_0000017a83b8c8b0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000017a83c1b4b0_0 .net *"_ivl_10", 0 0, L_0000017a83b8c8b0;  1 drivers
+v0000017a83c1bc90_0 .net *"_ivl_11", 4 0, L_0000017a83b8b9e0;  1 drivers
+v0000017a83c1bd30_0 .net *"_ivl_3", 4 0, L_0000017a83b8c7a0;  1 drivers
+L_0000017a83b8c868 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000017a83b45a80_0 .net *"_ivl_6", 0 0, L_0000017a83b8c868;  1 drivers
+v0000017a83b45b20_0 .net *"_ivl_7", 4 0, L_0000017a83b8b940;  1 drivers
+v0000017a83b43800_0 .net "cout", 0 0, L_0000017a83b8c700;  alias, 1 drivers
+v0000017a83b438a0_0 .net "in1", 3 0, v0000017a83b43b20_0;  1 drivers
+v0000017a83b43940_0 .net "in2", 3 0, v0000017a83b8bbc0_0;  1 drivers
+v0000017a83b439e0_0 .net "sum", 3 0, L_0000017a83b8c660;  1 drivers
+L_0000017a83b8c700 .part L_0000017a83b8b9e0, 4, 1;
+L_0000017a83b8c660 .part L_0000017a83b8b9e0, 0, 4;
+L_0000017a83b8c7a0 .concat [ 4 1 0 0], v0000017a83b43b20_0, L_0000017a83b8c868;
+L_0000017a83b8b940 .concat [ 4 1 0 0], v0000017a83b8bbc0_0, L_0000017a83b8c8b0;
+L_0000017a83b8b9e0 .arith/sum 5, L_0000017a83b8c7a0, L_0000017a83b8b940;
+    .scope S_0000017a83b45760;
+T_0 ;
+    %pushi/vec4 0, 0, 4;
+    %assign/vec4 v0000017a83b43b20_0, 0;
+    %pushi/vec4 0, 0, 4;
+    %assign/vec4 v0000017a83b8bbc0_0, 0;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 4;
+    %assign/vec4 v0000017a83b43b20_0, 0;
+    %pushi/vec4 1, 0, 4;
+    %assign/vec4 v0000017a83b8bbc0_0, 0;
+    %delay 100, 0;
+    %pushi/vec4 2, 0, 4;
+    %assign/vec4 v0000017a83b43b20_0, 0;
+    %pushi/vec4 2, 0, 4;
+    %assign/vec4 v0000017a83b8bbc0_0, 0;
+    %delay 100, 0;
+    %pushi/vec4 4, 0, 4;
+    %assign/vec4 v0000017a83b43b20_0, 0;
+    %pushi/vec4 4, 0, 4;
+    %assign/vec4 v0000017a83b8bbc0_0, 0;
+    %delay 100, 0;
+    %pushi/vec4 8, 0, 4;
+    %assign/vec4 v0000017a83b43b20_0, 0;
+    %pushi/vec4 8, 0, 4;
+    %assign/vec4 v0000017a83b8bbc0_0, 0;
+    %end;
+    .thread T_0;
+    .scope S_0000017a83b45760;
+T_1 ;
+    %vpi_call 2 22 "$dumpfile", "wave.vcd" {0 0 0};
+    %vpi_call 2 23 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000017a83b45760 {0 0 0};
+    %delay 1000, 0;
+    %vpi_call 2 24 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "halfadd_tb.v";
+    "halfadd.v";
